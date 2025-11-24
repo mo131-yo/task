@@ -1,0 +1,95 @@
+body{
+    display: flex;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+#container{
+    height: 10%;
+    color: white;
+    font-size: 80px;
+    font-weight: 700;
+    left: 40px;
+    text-align: center;
+   position: relative;
+       left: 280px;
+   top: 200px;
+}
+#glass{
+    border-radius: 12px;
+    backdrop-filter: blur(2px);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    top: 0;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    transform: translateX(-50%) rotate(8deg);
+}
+#tomHusnegt{
+      width: 600px;
+    padding: 16px;
+    column-gap: 12px;
+    border-radius: 26px;
+    background-color: white;
+   position: relative;
+right: 170px;
+top: 500px;
+}
+#section{
+        height: 85%;
+    display: flex;
+    row-gap: 10px;
+    padding: 26px 16px;
+    border-radius: 10px;
+    flex-direction: column;
+    background-color: #03958a;
+}
+.bill{
+       font-size: 18px;
+    color: #01464b;
+    margin-bottom: 4px;
+}
+.bill-input{
+        padding: 8px;
+    display: flex;
+    column-gap: 12px;
+    border-radius: 4px;
+    background-color: white;
+}
+.select{
+       font-size: 18px;
+    color: #01464b;
+    margin-bottom: 4px;
+}
+.tips{
+    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.button{
+        width: 70px;
+    height: 35px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #01464b;
+    border-radius: 4px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 3px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+.total{
+    font-size: 18px;
+    color: #01464b;
+    margin-bottom: 4px;
+}
+.reset-button{
+        height: 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
