@@ -26,73 +26,48 @@
 
 
 
-// //Calculate Tip
-// function calculateTip() {
-//   var billAmt = document.getElementById("billamt").value;
-//   var serviceQual = document.getElementById("serviceQual").value;
-//   var numOfPeople = document.getElementById("peopleamt").value;
+const billInput = document.getElementById("bill-input");
+const tipButtons = document.querySelectorAll(".button");
+const totalAmount = document.querySelector(".total");
+const resetButton = document.querySelector(".reset-button");
 
+let selectedTip = 0;
 
-//   //Calculate tip
-//   var total = (billAmt * serviceQual) / numOfPeople;
-//   //round to two decimal places
-//   total = Math.round(total * 100) / 100;
-//   //next line allows us to always have two digits after decimal point
-//   total = total.toFixed(2);
-//   //Display the tip
-//   document.getElementById("totalTip").style.display = "block";
-//   document.getElementById("tip").innerHTML = total;
+// Tip товч дарах үед
+tipButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        // сонгосон айдийг тэмдэглэх
+        tipButtons.forEach(b => b.style.backgroundColor = "white");
+        btn.style.backgroundColor = "#b6fff3";
 
-// }
+        selectedTip = parseInt(btn.textContent.replace("%", ""));
+        calculateTotal();
+    });
+});
 
-// //Hide the tip amount on load
-// document.getElementById("totalTip").style.display = "none";
-// document.getElementById("each").style.display = "none";
+// Bill input өөрчлөгдөх үед
+billInput.addEventListener("input", calculateTotal);
 
-// //click to call function
-// document.getElementById("calculate").onclick = function() {
-//   calculateTip();
+// Тооцоолох функц
+function calculateTotal() {
+    const bill = parseFloat(billInput.value);
 
-// };
+    if (isNaN(bill) || bill <= 0) {
+        totalAmount.textContent = "0.00";
+        return;
+    }
 
+    const tip = bill * (selectedTip / 100);
+    const total = bill + tip;
 
-   clickButton.addEventListener("click", function(){
-    const result= button[buttonNUmber.value];
-    newElement.innerText= result;
-    button.value=""
-   });
-   const button=(value)=>{
-    const result =value * value;
-    return result  
- }
-
-
- function calculateTip() {
-  let billAmt = document.getElementById("billamt").value;
-  let serviceQual = document.getElementById("serviceQual").value;
-  let numOfPeople = document.getElementById("peopleamt").value;
-
-  if (billAmt === "" || billAmt <= 0) {
-    alert("Please enter the bill amount");
-    return;
-  }
-
-  if (numOfPeople === "" || numOfPeople <= 0) {
-    numOfPeople = 1;
-  }
-
-  // Calculate tip
-  let total = (billAmt * serviceQual) / numOfPeople;
-
-  // Format to 2 decimal places
-  total = total.toFixed(2);
-
-  // Display the tip
-  document.getElementById("totalTip").style.display = "block";
-  document.getElementById("tip").innerHTML = total;
+    totalAmount.textContent = total.toFixed(2);
 }
 
-// Click event
-document.getElementById("calculate").onclick = function() {
-  calculateTip();
-};
+// Reset товч дарахад
+resetButton.addEventListener("click", () => {
+    billInput.value = "";
+    selectedTip = 0;
+    tipButtons.forEach(b => b.style.backgroundColor = "white");
+    totalAmount.textContent = "0.00";
+});
+
